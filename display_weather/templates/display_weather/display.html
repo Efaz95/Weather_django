@@ -1,6 +1,4 @@
 <h1>Weather</h1>
-
-
 <form action="{% url 'display' %}" method="post">
 	{% csrf_token %}
 	Enter city
@@ -8,7 +6,11 @@
 </form>
 
 {% if city %}
-	<p>Temperature at {{ city }} is: {{ temp }}°F</p>
+	<p>Temperature at <strong>{{ city }}</strong> is: {{ temp }}°F</p>
+	<p>Weather description: {{ weather_description }}</p>
 	<p>Today's low: {{ temp_min }}°F</p>
 	<p>Today's high: {{ temp_max }}°F</p>
+	<p>Humidity: {{ humidity }} %</p>
 {% endif %}
+
+

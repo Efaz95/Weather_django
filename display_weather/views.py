@@ -15,7 +15,10 @@ def display(request):
 		temp = response.json()['main']['temp']
 		temp_max = response.json()['main']['temp_max']
 		temp_min = response.json()['main']['temp_min']
-		return render(request, "display_weather/display.html", {'city':city, 'temp':temp, 'temp_max':temp_max, 'temp_min':temp_min})
+		humidity = response.json()['main']['humidity']
+		weather_description = response.json()['weather'][0]['description']
+		return render(request, "display_weather/display.html", {'city':city, 'temp':temp, 'temp_max':temp_max, 'temp_min':temp_min, 
+																'weather_description':weather_description, 'humidity':humidity})
 
 	else:	
 		return render(request, "display_weather/display.html")
